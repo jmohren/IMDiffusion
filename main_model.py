@@ -323,13 +323,53 @@ class CSDI_base(nn.Module):
             )
         else:
             cond_mask = self.get_randmask(observed_mask,ratio=self.ratio)
+            
+            #Code introduced by Johannes for testing data and masking
+            # POINTER # 
+            import numpy as np
+            print("observed_data")
+            # print(observed_data)
+            np.savetxt("observed_data.txt", observed_data.to("cpu").numpy()[0], fmt='%.7f', delimiter=', ')
+            print("observed_data shape:")
+            print(observed_data.shape)
+
+            print("observed_tp")
+            print(observed_tp)
+            np.savetxt("observed_tp.txt", observed_tp.to("cpu").numpy(), fmt='%.7f', delimiter=', ')
+            print("observed_tp shape:")
+            print(observed_tp.shape)
+
+            print("observed_mask")
+            print(observed_mask)
+            np.savetxt("observed_mask.txt", observed_mask.to("cpu").numpy()[0], fmt='%.7f', delimiter=', ')            
+            print("observed_mask shape:")
+            print(observed_mask.shape)
+
+            print("self.ratio")
+            print(self.ratio)
+
+            print("cond_mask")
+            # print(cond_mask)
+            np.savetxt("cond_mask.txt", cond_mask.to("cpu").numpy()[0], fmt='%.7f', delimiter=', ')
+            print("cond_mask shape:")
+            print(cond_mask.shape)
+
+            # exit()
             #
             # cond_mask = torch.zeros_like(observed_mask)
             # cond_mask = self.get_random_mask(observed_mask)
 
         side_info = self.get_side_info(observed_tp, cond_mask)
 
+        print("side_info")
+        print(side_info)
+        print("side_info shape:")
+        print(side_info.shape)
+        np.savetxt("side_info.txt", side_info.to("cpu").detach().numpy()[0][0], fmt='%.7f', delimiter=', ')            
+
         loss_func = self.calc_loss if is_train == 1 else self.calc_loss_valid
+
+        exit()
 
         return loss_func(observed_data, cond_mask, observed_mask, side_info, is_train, strategy_type = strategy_type)
 

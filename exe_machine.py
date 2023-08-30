@@ -30,10 +30,11 @@ test_data_path_list = []
 label_data_path_list = []
 
 if args.dataset == "SMD":
-    data_set_number = ["3-4",'3-5',"3-10","3-11","1-5","1-8","2-4"]
-    data_set_number += ["1-1","1-2","1-3","1-4","1-5","1-6","1-7","1-8"]
-    data_set_number += ["2-1","2-2","2-3","2-4","2-5","2-6","2-7","2-8","2-9"]
-    data_set_number += ["3-1","3-2","3-3","3-4","3-5","3-6","3-7","3-8","3-9","3-10","3-11"]
+    data_set_number = ["3-4"]
+    # data_set_number = ["3-4",'3-5',"3-10","3-11","1-5","1-8","2-4"]
+    # data_set_number += ["1-1","1-2","1-3","1-4","1-5","1-6","1-7","1-8"]
+    # data_set_number += ["2-1","2-2","2-3","2-4","2-5","2-6","2-7","2-8","2-9"]
+    # data_set_number += ["3-1","3-2","3-3","3-4","3-5","3-6","3-7","3-8","3-9","3-10","3-11"]
 
     for data_set_id in data_set_number:
             file = f"machine-{data_set_id}_train.pkl"
@@ -90,9 +91,9 @@ for training_epoch in range(0,6):
                     config["diffusion"]["num_steps"] = diffusion_step
                     print(json.dumps(config, indent=4))
 
-                    foldername = f"./train_result/save{training_epoch}/" + f"{train_data_path.replace('_train.pkl', '').replace('data/Machine/', '')}" + "_unconditional:" + str(
-                        unconditional) + "_split:" + str(
-                        split) + "_diffusion_step:" + str(diffusion_step) + "/"
+                    foldername = f"./train_result/save{training_epoch}/" + f"{train_data_path.replace('_train.pkl', '').replace('data/Machine/', '')}" + "_unconditional=" + str(
+                        unconditional) + "_split=" + str(
+                        split) + "_diffusion_step=" + str(diffusion_step) + "/"
                     print('model folder:', foldername)
                     os.makedirs(foldername)
                     with open(foldername + "config.json", "w") as f:
