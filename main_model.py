@@ -329,19 +329,19 @@ class CSDI_base(nn.Module):
             import numpy as np
             print("observed_data")
             # print(observed_data)
-            np.savetxt("observed_data.txt", observed_data.to("cpu").numpy()[0], fmt='%.7f', delimiter=', ')
+            np.savetxt("results/observed_data.txt", observed_data.to("cpu").numpy()[0], fmt='%.7f', delimiter=', ')
             print("observed_data shape:")
             print(observed_data.shape)
 
             print("observed_tp")
             print(observed_tp)
-            np.savetxt("observed_tp.txt", observed_tp.to("cpu").numpy(), fmt='%.7f', delimiter=', ')
+            np.savetxt("results/observed_tp.txt", observed_tp.to("cpu").numpy(), fmt='%.7f', delimiter=', ')
             print("observed_tp shape:")
             print(observed_tp.shape)
 
             print("observed_mask")
             print(observed_mask)
-            np.savetxt("observed_mask.txt", observed_mask.to("cpu").numpy()[0], fmt='%.7f', delimiter=', ')            
+            np.savetxt("results/observed_mask.txt", observed_mask.to("cpu").numpy()[0], fmt='%.7f', delimiter=', ')            
             print("observed_mask shape:")
             print(observed_mask.shape)
 
@@ -350,7 +350,7 @@ class CSDI_base(nn.Module):
 
             print("cond_mask")
             # print(cond_mask)
-            np.savetxt("cond_mask.txt", cond_mask.to("cpu").numpy()[0], fmt='%.7f', delimiter=', ')
+            np.savetxt("results/cond_mask.txt", cond_mask.to("cpu").numpy()[0], fmt='%.7f', delimiter=', ')
             print("cond_mask shape:")
             print(cond_mask.shape)
 
@@ -365,7 +365,7 @@ class CSDI_base(nn.Module):
         print(side_info)
         print("side_info shape:")
         print(side_info.shape)
-        np.savetxt("side_info.txt", side_info.to("cpu").detach().numpy()[0][0], fmt='%.7f', delimiter=', ')            
+        np.savetxt("results/side_info.txt", side_info.to("cpu").detach().numpy()[0][0], fmt='%.7f', delimiter=', ')            
 
         loss_func = self.calc_loss if is_train == 1 else self.calc_loss_valid
 
