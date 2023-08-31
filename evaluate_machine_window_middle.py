@@ -65,7 +65,7 @@ for iteration in os.listdir("train_result"):
             unconditional = False
 
         split = 4
-        diffusion_step = int(subset_name.split("diffusion_step:")[-1])
+        diffusion_step = int(subset_name.split("diffusion_step=")[-1])
 
         train_data_path_list = []
         test_data_path_list = []
@@ -113,6 +113,7 @@ for iteration in os.listdir("train_result"):
         model = CSDI_Physio(config, args.device, target_dim=feature_dim, ratio=args.ratio).to(args.device)
         base_folder = f"train_result/{iteration}/{subset_name}"
 
+        # added strict=false
         model.load_state_dict(torch.load(f"{base_folder}/best-model.pth",map_location=args.device))
 
         print("base folder is ")
