@@ -255,9 +255,11 @@ if __name__ == "__main__":
         
     dataset_name = args.dataset_name
     if dataset_name == "SMD":
-        subset_name_list = [f"machine-1-{i}" for i in range(1, 9)]
-        subset_name_list += [f"machine-2-{i}" for i in range(1, 10)]
-        subset_name_list += [f"machine-3-{i}" for i in range(1, 12)]
+        ### POINTER ### - Attention change before all
+        subset_name_list = ["machine-3-4"]
+        # subset_name_list = [f"machine-1-{i}" for i in range(1, 9)]
+        # subset_name_list += [f"machine-2-{i}" for i in range(1, 10)]
+        # subset_name_list += [f"machine-3-{i}" for i in range(1, 12)]
     elif dataset_name == "GCP":
         subset_name_list = [f"service{i}" for i in range(0,30)]
     else:
@@ -286,6 +288,7 @@ if __name__ == "__main__":
             open(f"score/{dataset_name}/best_infor/{subset_name}_{args.compute_sum}_{args.compute_abs}.json", "w")
         )
 
+        os.makedirs(f"score/{dataset_name}/infor_dict", exist_ok=True)
         json.dump(
             threshold_infor_dict,
             open(f"score/{dataset_name}/infor_dict/{subset_name}_{args.compute_sum}_{args.compute_abs}.json", "w")

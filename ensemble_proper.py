@@ -281,10 +281,11 @@ def compute_one_strategy(data_id,strategy_name,ensemble_strategy_list,csv_writer
         compute_sum = False
 
     if data_id == "SMD":
-        machine_number_list = [f"machine-1-{i}" for i in range(1, 9)]
-        machine_number_list += [f"machine-2-{i}" for i in range(1,10)]
-        machine_number_list += [f"machine-3-{i}" for i in range(1,12)]
-        # machine_number_list = [f"machine-1-5"]
+        # machine_number_list = [f"machine-1-{i}" for i in range(1, 9)]
+        # machine_number_list += [f"machine-2-{i}" for i in range(1,10)]
+        # machine_number_list += [f"machine-3-{i}" for i in range(1,12)]
+        ### POINTER ### - Attention change before all
+        machine_number_list = [f"machine-3-4"]
         threshold_dict = {}
         csv_reader = csv.reader(open("score/SMD/infor.csv"))
         # load threshold dict for each subset

@@ -59,7 +59,7 @@ for iteration in os.listdir("train_result"):
 
         data_id = subset_name.split("_unconditional")[0]
 
-        if "unconditional:True" in subset_name:
+        if "unconditional=True" in subset_name:
             unconditional = True
         else:
             unconditional = False
@@ -110,6 +110,7 @@ for iteration in os.listdir("train_result"):
         elif args.dataset == "SWaT":
             feature_dim = 45
 
+        print(config)
         model = CSDI_Physio(config, args.device, target_dim=feature_dim, ratio=args.ratio).to(args.device)
         base_folder = f"train_result/{iteration}/{subset_name}"
 

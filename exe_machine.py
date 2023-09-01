@@ -30,6 +30,7 @@ test_data_path_list = []
 label_data_path_list = []
 
 if args.dataset == "SMD":
+    ### POINTER ### - Attention change before all
     data_set_number = ["3-4"]
     # data_set_number = ["3-4",'3-5',"3-10","3-11","1-5","1-8","2-4"]
     # data_set_number += ["1-1","1-2","1-3","1-4","1-5","1-6","1-7","1-8"]
